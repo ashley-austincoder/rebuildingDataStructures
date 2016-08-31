@@ -9,6 +9,7 @@ var BinarySearchTree = function(value) {
 
 var binaryTreePrototype = {};
 
+//add a node to binery search tree
 binaryTreePrototype.insert = function(val) {
   if(val < this.value){
     if(this.left === null){
@@ -25,6 +26,7 @@ binaryTreePrototype.insert = function(val) {
   }
 };
 
+//return true if val is in the tree, false if not
 binaryTreePrototype.contains = function(val) {
   if(this.value === val) return true;
   
@@ -36,11 +38,12 @@ binaryTreePrototype.contains = function(val) {
   return false;
 };
 
-binaryTreePrototype.depthFirstLog = function(callBack) {
+//recurse through each node in tree and run callBack on each
+binaryTreePrototype.cbEach = function(callBack) {
   callBack(this.value)
   if(this.left){
-    this.left.depthFirstLog(callBack);
+    this.left.cbEach(callBack);
   } else if (this.right){
-    this.right.depthFirstLog(callBack)
+    this.right.cbEach(callBack)
   }
 };
