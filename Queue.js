@@ -1,16 +1,22 @@
 var Queue = function() {
-
+  this.storage = {};
+  this.start = 0;
+  this.end = 0;
 };
 
-var queueMethods = {};
-
-
-queueMethods.enqueue = function(value) {
+//add value to back of the queue
+Queue.prototype.enqueue = function(value) {
+  this.storage[this.end++] = value;
 };
 
-queueMethods.dequeue = function() {
+//remove first item in the queue
+Queue.prototype.dequeue = function() {
+  var remove = this.storage[this.start];
+  delete this.storage[this.start];
 
+  return remove;
 };
 
-queueMethods.size = function() {
+Queue.prototype.size = function() {
+  return this.end - this.start;
 };
